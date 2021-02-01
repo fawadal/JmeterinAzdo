@@ -9,7 +9,8 @@ jobs:
   - job: Test
     timeoutInMinutes: 360
     cancelTimeoutInMinutes: 3
-    pool: 'Azure Pipelines'
+    pool:
+    vmImage: ubuntu-latest
     steps :
 
     - task: CmdLine@2
