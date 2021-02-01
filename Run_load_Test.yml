@@ -9,47 +9,9 @@ jobs:
   - job: Test
     timeoutInMinutes: 360
     cancelTimeoutInMinutes: 3
-    pool:
-    vmImage: ubuntu-latest
+    pool: 'Agent_Pool_Name'
     steps :
-
-    - task: CmdLine@2
-      inputs:
-        script: sed -i 's/USERNAME/$(USERNAME)/g' users.csv
-        workingDirectory: $(Build.SourcesDirectory)/TestFiles
-      displayName: Inserting Credentials
-
-    - task: CmdLine@2
-      inputs:
-        script: sed -i 's/PASSWORD/$(PASSWORD)/g' users.csv
-        workingDirectory: $(Build.SourcesDirectory)/TestFiles
-      displayName: Inserting Credentials
-    
-    - task: CmdLine@2
-      inputs:
-        script: sed -i 's/PARALLELUSERS/$(PARALLELUSERS)/g' Test.jmx
-        workingDirectory: $(Build.SourcesDirectory)/TestFiles
-      displayName: Setting Number of Users
-
-    - task: CmdLine@2
-      inputs:
-        script: sed -i 's/LOADDURATION/$(LOADDURATION)/g' Test.jmx
-        workingDirectory: $(Build.SourcesDirectory)/TestFiles
-      displayName: Setting Load Duration
-
-    - task: CmdLine@2
-      inputs:
-        script: sed -i 's/RAMPUPTIME/$(RAMPUPTIME)/g' Test.jmx
-        workingDirectory: $(Build.SourcesDirectory)/TestFiles
-      displayName: Setting Ramp Up Time
-
-    - task: CmdLine@2
-      inputs:
-        script: sed -i 's/SHUTDOWNTIME/$(SHUTDOWNTIME)/g' Test.jmx
-        workingDirectory: $(Build.SourcesDirectory)/TestFiles
-      displayName: Setting Tear Down Time
-
-
+   x
     - task: CmdLine@2
       inputs:
         script: sh build.sh
@@ -76,3 +38,4 @@ jobs:
       inputs:
        pathToPublish: '$(Build.SourcesDirectory)/TestFiles/LoadReports/'
       condition: always()
+
