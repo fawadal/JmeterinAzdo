@@ -9,7 +9,7 @@ jobs:
   - job: Test
     timeoutInMinutes: 360
     cancelTimeoutInMinutes: 3
-    pool: 'Agent_Pool_Name'
+    pool: 'Azure Pipelines'
     steps :
     - task: CmdLine@2
       inputs:
